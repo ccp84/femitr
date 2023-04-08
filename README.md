@@ -1,12 +1,12 @@
 # Frontend Masters Intro To React v8
 
 ## Setup 
-* Ran npm init -y
-* Using prettier version 2.7.1 : npm install -D prettier@2.7.1, create .prettierrc file in root
+* Ran `npm init -y`
+* Using prettier version 2.7.1 : `npm install -D prettier@2.7.1`, create .prettierrc file in root
 ```
 {}
 ```
-* Add ESLint to project : npm install -D eslint@8.24.0 eslint-config-prettier@8.5.0, create .eslintrc.json in root
+* Add ESLint to project : `npm install -D eslint@8.24.0 eslint-config-prettier@8.5.0`, create .eslintrc.json in root
 ```
 {
 "extends": ["eslint:recommended", "prettier"],
@@ -34,7 +34,7 @@ dist/
 coverage/
 .vscode/
 ```
-* Installed vite - npm install -D vite@3.1.4 @vitejs/plugin-react@2.1.0 , create vite.config.js
+* Installed vite - `npm install -D vite@3.1.4 @vitejs/plugin-react@2.1.0` , create vite.config.js
 ```
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -44,7 +44,7 @@ plugins: [react()],
 root: "src",
 });
 ```
-* Installed react - npm install react@18.2.0 react-dom@18.2.0
+* Installed react - `npm install react@18.2.0 react-dom@18.2.0`
 * In package.json add:
 ```
 // inside scripts
@@ -52,7 +52,7 @@ root: "src",
 "build": "vite build",
 "preview": "vite preview"
 ```
-* Update ESLint for JSX - npm install -D eslint-plugin-import@2.26.0 eslint-plugin-jsx-a11y@6.6.1 eslint-plugin-react@7.31.8 and update .eslintrc.json
+* Update ESLint for JSX - `npm install -D eslint-plugin-import@2.26.0 eslint-plugin-jsx-a11y@6.6.1 eslint-plugin-react@7.31.8` and update .eslintrc.json
 ```
 {
 "extends": [
@@ -97,3 +97,17 @@ root: "src",
 
 * Files started: main App.jsx, Pet.jsx module. 
 * Import Pet into App.jsx 
+* From App
+```javascript
+const App = () => {
+return (
+<div>
+<h1>Adopt Me!</h1>
+<Pet name="Obi" animal="Dog" breed="Poodle" />
+<Pet name="Fizz" animal="Cat" breed="Persian" />
+<Pet name="Nala" animal="Hamster" breed="Sirian" />
+</div>
+);
+};
+```
+* To test site : `npm run dev`

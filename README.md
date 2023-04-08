@@ -91,10 +91,15 @@ root: "src",
 }
 }
 ```
-
+* Install ESLint plugin for hooks `npm install -D eslint-plugin-react-hooks@4.6.0`
+* Add to .eslintrc.json 
+```
+"plugin:react-hooks/recommended",
+```
 
 ## Development
 
+### Pet.jsx
 * Files started: main App.jsx, Pet.jsx module. 
 * Import Pet into App.jsx 
 * From App
@@ -111,3 +116,28 @@ return (
 };
 ```
 * To test site : `npm run dev`
+
+### SearchParams.jsx
+* CSS classes use `<div className="search-params">`
+* Form labels use `<label htmlFor="location">`
+* Export default SearchParams, start using SearchParams in App and it will auto import at the top!
+* `import { useState } from "react";` - React hook, used to pass form variable to update 
+* `const [location, setLocation] = useState("");` - set the variables to use from the hook array
+* Call this function to update the hook `onChange={(e) => setLocation(e.target.value)}` to pick up user changes within the input box. 
+* 
+```javascript
+ <label htmlFor="breed"> // label the input
+          Breed
+          <select // html dropdown
+            id="breed" // id for form element
+            onChange={(e) => setBreed(e.target.value)} // React hook behaviour
+            disabled={BREEDS.length === 0} // if no breeds, disable dropdown
+            value={breed}
+          >
+            <option /> // first empty box
+            {BREEDS.map((breed) => ( // create array from BREEDS array
+              <option key={breed}>{breed}</option> // return a React option tag for each value in BREEDS array
+            ))}
+          </select>
+        </label>
+```

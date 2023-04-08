@@ -94,3 +94,6 @@ root: "src",
 
 
 ## Development
+
+* Files started: main App.jsx, Pet.jsx module. 
+* Import Pet into App.jsx 

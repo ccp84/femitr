@@ -141,3 +141,37 @@ return (
           </select>
         </label>
 ```
+
+* `import { useEffect, useState } from "react";` - useEffect for calls from / write to API, database etc
+```javascript
+useEffect(() => { 
+requestPets();
+}, []); // eslint-disable-line react-hooks/exhaustive-deps - this gets eslint to ignore it when its definitely what we meant to do
+
+async function requestPets() {
+const res = await fetch( // write the function that calls out to the api
+`http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+);
+const json = await res.json(); // store the response
+
+    setPets(json.pets); // initialise the pets array from the returned json
+
+}
+
+<form
+        onSubmit={(e) => {
+          e.preventDefault(); // stop submit button refreshing the page
+          requestPets();  // submit button calls the function instead
+        }}
+      >
+// OUTSIDE THE FORM - returned data displayed on page
+{pets.map((pet) => ( // pets array mapped to Pet modules
+<Pet
+          name={pet.name}
+          animal={pet.animal}
+          breed={pet.breed}
+          key={pet.id} // always add an id eslint should remind you
+        />
+))}
+
+```

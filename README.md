@@ -250,3 +250,23 @@ key={pet.id}
 * Improves refreshing and accessibility:
 * Import `import { Link } from "react-router-dom";`
 * Replace `<a href={/details/${id}} className="pet">` with `<Link to={/details/${id}} className="pet">`
+
+## React Query
+* Install `npm install @tanstack/react-query@4.10.1`
+* Import to app `import { QueryClient, QueryClientProvider } from "@tanstack/react-query";`
+* Set up the client:
+```javascript
+const queryClient = new QueryClient({
+defaultOptions: {
+queries: {
+staleTime: Infinity,
+cacheTime: Infinity, // never re fetch or a number in milliseconds
+},
+},
+});
+```
+* Wrap your app in the query client, after the browser router:
+```javascript
+<BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+```

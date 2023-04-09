@@ -201,3 +201,28 @@ requestBreedList(); // otherwise call the api
 }, [animal]); // pass in parameter
 
 ```
+
+### Results
+
+* Moved results div outside search params file into its own component
+```javascript
+const Results = ({ pets }) => { // parameter passed in
+return (
+<div className="search">
+{!pets.length ? ( // if pets array is empty 
+<h1>No Pets Found</h1>
+) : (
+pets.map((pet) => ( // map pets array
+<Pet // react component
+animal={pet.animal}
+breed={pet.breed}
+images={pet.images}
+location={`${pet.city}, ${pet.state}`}
+key={pet.id}
+/>
+))
+)}
+</div>
+);
+};
+```

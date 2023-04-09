@@ -175,3 +175,29 @@ const json = await res.json(); // store the response
 ))}
 
 ```
+### Use Breed List
+```javascript
+if (!animal) { // if theres no animal passed from search set an empty list
+setBreedList([]);
+} else if (localCache[animal]) { // if list in local cache return that
+setBreedList([localCache[animal]]);
+} else {
+requestBreedList(); // otherwise call the api
+}
+
+    async function requestBreedList() {
+      setBreedList([]);
+      setStatus("Loading");
+
+      const res = await fetch( //fetch result from api
+        `http://pets-v2.dev-apis.com/breeds?animal=${animal}`
+      );
+      const json = await res.json(); // set json returned from api
+      localCache[animal] = json.breeds || []; // ret cache to api result if empty set to blank list
+      setBreedList(localCache[animal]); // set breed list to local cache
+      setStatus("Loaded"); // update status
+    }
+
+}, [animal]); // pass in parameter
+
+```

@@ -226,3 +226,27 @@ key={pet.id}
 );
 };
 ```
+
+## React Router
+* Install `npm install react-router-dom@6.4.1`
+* Import to App `import { BrowserRouter, Routes, Route } from "react-router-dom";`
+* Wrap app in tags so that you can use routing:
+```javascript
+<BrowserRouter>
+      <div>
+        <h1>Adopt Me!</h1>
+        // routing goes in here
+      </div>
+    </BrowserRouter>
+```
+* Add in routes :
+```javascript
+<Routes>
+        <Route path="/details/:id" element={<Details />} /> // path is the URL
+        <Route path="/" element={<SearchParams />} />      // element is the React component to render
+      </Routes>
+```
+### Using Link-to
+* Improves refreshing and accessibility:
+* Import `import { Link } from "react-router-dom";`
+* Replace `<a href={/details/${id}} className="pet">` with `<Link to={/details/${id}} className="pet">`

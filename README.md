@@ -270,3 +270,4 @@ cacheTime: Infinity, // never re fetch or a number in milliseconds
 <BrowserRouter>
       <QueryClientProvider client={queryClient}>
 ```
+* Use the query : import `import { useQuery } from "@tanstack/react-query";`

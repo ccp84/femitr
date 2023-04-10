@@ -271,3 +271,20 @@ cacheTime: Infinity, // never re fetch or a number in milliseconds
       <QueryClientProvider client={queryClient}>
 ```
 * Use the query : import `import { useQuery } from "@tanstack/react-query";`
+
+## Class Components
+
+* Use the class identifier
+```javascript
+import { Component } from "react";
+
+class Carousel extends Component {
+```
+* Must use a render to return, use this to identify state and properties
+```javascript
+render() {
+const { active } = this.state;
+const { images } = this.props; // passed in from the component used elsewhere
+return ( // return the markup
+<div className="carousel">
+```

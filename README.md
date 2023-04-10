@@ -288,3 +288,37 @@ const { images } = this.props; // passed in from the component used elsewhere
 return ( // return the markup
 <div className="carousel">
 ```
+
+## Error Boundaries
+* Must be a class
+```javascript
+class ErrorBoundary extends Component {
+state = { hasError: false }; // default state no error
+
+static getDerivedStateFromError() {
+return { hasError: true }; // when static function called on class turn to error is true
+}
+render() { 
+if (this.state.hasError) { // if error is true - render to DOM
+return (
+<h2>
+There was an error with this listing. <Link to="/">Click here</Link>{" "}
+to back to the home page.
+</h2>
+);
+}
+
+    return this.props.children; // else pass and continue rendering as normal
+
+}
+```
+* Change the export to wrap the entire function component in the error boundary:
+```javascript
+function DetailsErrorBoundary() { // if you need to pass in properties (props)
+<ErrorBoundary>
+<Details />                       //then use the spread operator Details (...props)
+</ErrorBoundary>;
+}
+
+export default DetailsErrorBoundary;
+```
